@@ -1,10 +1,13 @@
 ﻿using FinalCIS174.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
 
 namespace FinalCIS174.Controllers
 {
+    //Uncomment for players to have an account to use the app
+    [Authorize]
     public class PlayerController : Controller
     { 
         private DNDContext context;
@@ -72,7 +75,7 @@ namespace FinalCIS174.Controllers
             var cookies = new PlayerCookies(Response.Cookies);
             cookies.SetMyPlayerIds(countries);
 
-            TempData["message"] = $"{model.Player.Name} added to your favorites";
+            TempData["message"] = $"{model.Player.Name} added to your party";
 
             return RedirectToAction("Index",
                 new
