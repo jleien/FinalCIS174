@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/Xk2uuqefmCD38D89XTPrq0miGh73Qz5GoChBuXg1cCsJkNPjHpWh2Kb07OkcCsaoSImG+rUsV5DZdpytY1sbw==",
+  "dgSpecHash": "Q1Jy0heNFGm0bAnRnQKx40voJBphyikqMLiuTAG9azJAfr/ccTLfbI63vMSjI0G4ACrgyzf9i3zGU5kemebJ5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
   "expectedPackageFiles": [
@@ -10,8 +10,10 @@
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.11\\microsoft.aspnetcore.cryptography.internal.6.0.11.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.11\\microsoft.aspnetcore.cryptography.keyderivation.6.0.11.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.11.nupkg.sha512",
+    "C:\\Users\\thefo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.11\\microsoft.aspnetcore.jsonpatch.6.0.11.nupkg.sha512",
+    "C:\\Users\\thefo\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.11\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.11.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\thefo\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\thefo\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
@@ -48,6 +50,7 @@
     "C:\\Users\\thefo\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\thefo\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\thefo\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
