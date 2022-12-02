@@ -21,7 +21,7 @@ namespace FinalCIS174.Models
 
         public void SetMyPlayerIds(List<Player> myplayers)
         {
-            List<int> ids = myplayers.Select(c => c.PlayerID).ToList();
+            List<string> ids = myplayers.Select(c => c.PlayerID).ToList();
             string idsString = String.Join(Delimiter, ids);
             CookieOptions options = new CookieOptions { Expires = DateTime.Now.AddDays(30) };
             RemoveMyPlayerIds();     // delete old cookie first

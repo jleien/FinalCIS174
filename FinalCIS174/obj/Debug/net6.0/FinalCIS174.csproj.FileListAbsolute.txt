@@ -85,3 +85,4 @@ C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\runtimes\wi
 C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.csproj.CopyComplete
+C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -1,5 +1,7 @@
 ﻿using FinalCIS174.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
 
 namespace FinalCIS174.Controllers
 {
@@ -12,9 +14,72 @@ namespace FinalCIS174.Controllers
             context = ctx;
         }
     
-        public IActionResult Index()
+        public IActionResult Index(PlayerListViewModel model)
         {
-            return View();
+            model.Races = context.Races.ToList();
+            model.Classes = context.Classes.ToList();
+
+            var session = new PlayerSession(HttpContext.Session);
+            session.SetActiveClass(model.ActiveClass);
+            session.SetActiveRace(model.ActiveRace);
+
+            int? count = session.GetMyPlayerCount();
+            if(count == null)
+            {
+                var cookies = new PlayerCookies(Request.Cookies);
+                string[] ids = cookies.GetMyPlayerIds();
+
+                List<Player> myplayers = new List<Player>();
+                if (ids.Length > 0)
+                    myplayers = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => ids.Contains(c.PlayerID)).ToList();
+                session.SetMyPlayers(myplayers);
+            }
+
+            IQueryable<Player> query = context.Players;
+            if (model.ActiveClass != "all")
+                query = query.Where(
+                    t => t.Class.ClassID.ToLower() == model.ActiveClass.ToLower());
+            if (model.ActiveRace != "all")
+                query = query.Where(
+                    t => t.Race.RaceID.ToLower() == model.ActiveRace.ToLower());
+            model.Players = query.ToList();
+
+            return View(model);
+        }
+
+        public IActionResult Details(string id)
+        {
+            var session = new PlayerSession(HttpContext.Session);
+            var model = new PlayerViewModel
+            {
+                Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
+                ActiveRace = session.GetActiveRace(),
+                ActiveClass = session.GetActiveClass()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Add(PlayerViewModel model)
+        {
+            model.Player = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => c.PlayerID == model.Player.PlayerID).FirstOrDefault();
+
+            var session = new PlayerSession(HttpContext.Session);
+            var countries = session.GetMyPlayers();
+            countries.Add(model.Player);
+            session.SetMyPlayers(countries);
+
+            var cookies = new PlayerCookies(Response.Cookies);
+            cookies.SetMyPlayerIds(countries);
+
+            TempData["message"] = $"{model.Player.Name} added to your favorites";
+
+            return RedirectToAction("Index",
+                new
+                {
+                    ActiveGame = session.GetActiveRace(),
+                    ActiveCat = session.GetActiveClass()
+                });
         }
     }
 }
