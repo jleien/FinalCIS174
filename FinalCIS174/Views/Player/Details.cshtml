@@ -1,0 +1,33 @@
+﻿@model PlayerViewModel 
+@{
+    ViewData["Title"] = "Player Details";
+}
+
+<h2 class="text-center p-2">Player Details</h2>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <ul class="list-group text-center">
+            <li class="list-group-item">
+                <h3>@Model.Player.Name</h3>
+            </li>
+            <li class="list-group-item">
+                <h4>Category: @Model.Player.Class.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <h4>Game: @Model.Player.Race.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <form asp-action="Add" method="post">
+                    <a asp-action="Index" style="height:fit-content; width:200px" class="btn btn-primary"
+                       asp-route-activeGame="@Model.ActiveRace"
+                       asp-route-activeCat="@Model.ActiveClass">Return to Home Page</a>
+                    <button style="height:fit-content; width:200px" type="submit" class="btn btn-primary">
+                        Add to Favorites
+                    </button>
+                    <input type="hidden" asp-for="Player.PlayerID" />
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
