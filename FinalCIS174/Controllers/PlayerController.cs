@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
+using System.Net.Sockets;
 
 namespace FinalCIS174.Controllers
 {
@@ -68,12 +69,12 @@ namespace FinalCIS174.Controllers
             model.Player = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => c.PlayerID == model.Player.PlayerID).FirstOrDefault();
 
             var session = new PlayerSession(HttpContext.Session);
-            var countries = session.GetMyPlayers();
-            countries.Add(model.Player);
-            session.SetMyPlayers(countries);
+            var players = session.GetMyPlayers();
+            players.Add(model.Player);
+            session.SetMyPlayers(players);
 
             var cookies = new PlayerCookies(Response.Cookies);
-            cookies.SetMyPlayerIds(countries);
+            cookies.SetMyPlayerIds(players);
 
             TempData["message"] = $"{model.Player.Name} added to your party";
 
@@ -83,6 +84,35 @@ namespace FinalCIS174.Controllers
                     ActiveGame = session.GetActiveRace(),
                     ActiveCat = session.GetActiveClass()
                 });
+        }
+
+        public IActionResult AddPlayer()
+        {
+            var player = new Player();
+
+            ViewBag.Classes = context.Classes.ToList();
+            ViewBag.Races = context.Races.ToList();
+            return View(player);
+        }
+
+        [HttpPost]
+        public IActionResult AddPlayer(Player model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                context.Players.Add(model);
+
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(model);
+            }
+
         }
     }
 }

@@ -177,3 +177,6 @@ C:\Users\thefo\Source\Repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\refint\Fina
 C:\Users\thefo\Source\Repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.pdb
 C:\Users\thefo\Source\Repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.genruntimeconfig.cache
 C:\Users\thefo\Source\Repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\ref\FinalCIS174.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
