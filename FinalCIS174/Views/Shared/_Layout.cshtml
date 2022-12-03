@@ -28,6 +28,37 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="Index">Player View</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">My Party</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+
+                    @using Microsoft.AspNetCore.Identity
+                    @inject SignInManager<User> signInManager
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">Hello, @User.Identity.Name!</li>
+                        <li class="nav-item">
+                            <form method="post" asp-action="Logout" asp-controller="Account"
+                                  asp-area="">
+                                <input type="submit" value="Logout"
+                                       class="btn btn-outline-dark" />
+                            </form>
+                        </li>
+                    }
+                    else {
+                            <li class="nav-item">
+                                <a asp-action="Register" asp-controller="Account"
+                               asp-area="" class="btn btn-outline">
+                                    Register
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account"
+                               asp-area="" class="btn btn-outline">Log In</a>
+                            </li>
+                    }
                     </ul>
                 </div>
             </div>

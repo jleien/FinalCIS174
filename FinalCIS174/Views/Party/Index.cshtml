@@ -1,0 +1,37 @@
+﻿@model PlayerListViewModel
+@{
+    ViewData["Title"] = "My Party";
+}
+<div class="text-center">
+    <h2>My Party</h2>
+    <form asp-action="Delete" method="post">
+        <a asp-action="Index" asp-area="" asp-controller="Party" style="height:fit-content; width:200px" class="btn btn-primary"
+           asp-route-activeClass="@Model.ActiveClass"
+           asp-route-activeRace="@Model.ActiveRace">
+            Back to Home Page
+        </a>
+        <button type="submit" class="btn btn-primary" style="height:fit-content; width:200px">
+            Clear Party
+        </button>
+    </form>
+    <br />
+</div>
+<div class="row">
+    <div class="col-8 offset-2">
+        <ul class="list-group">
+            @foreach (Player player in Model.Players)
+            {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            @player.Name | @player.Level
+                        </div>
+                        <div class="col-sm-4">
+                            @player.Class.Name | @player.Race.Name
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

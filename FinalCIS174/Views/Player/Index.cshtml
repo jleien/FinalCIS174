@@ -4,24 +4,24 @@
 }
 <div class="row">
     <div class="col-sm-3">
-        <h3 class="mt-3">Category</h3>
+        <h3 class="mt-3">Class</h3>
         <div class="list-group">
             @foreach (Class cla in Model.Classes)
             {
                 <a asp-action="Index"
-               asp-route-activeCat="@cla.ClassID"
-               asp-route-activeGame="@Model.ActiveClass"
+               asp-route-activeClass="@cla.ClassID"
+               asp-route-activeRace="@Model.ActiveRace"
                class="list-group-item
                        @Model.CheckActiveClass(cla.ClassID)">@cla.Name</a>
             }
         </div>
-        <h3 class="mt-3">Game</h3>
+        <h3 class="mt-3">Race</h3>
         <div class="list-group">
             @foreach (Race rac in Model.Races)
             {
                 <a asp-action="Index"
-               asp-route-activeCat="@Model.ActiveRace"
-               asp-route-activeGame="@rac.RaceID"
+               asp-route-activeClass="@Model.ActiveClass"
+               asp-route-activeRace="@rac.RaceID"
                class="list-group-item
                        @Model.CheckActiveRace(rac.RaceID)">@rac.Name</a>
             }
