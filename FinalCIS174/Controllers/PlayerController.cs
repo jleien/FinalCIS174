@@ -9,15 +9,17 @@ namespace FinalCIS174.Controllers
 {
     //Uncomment for players to have an account to use the app
     [Authorize]
+
     public class PlayerController : Controller
-    { 
+    {
         private DNDContext context;
 
         public PlayerController(DNDContext ctx)
         {
             context = ctx;
         }
-    
+        [Route("{controller}/{activeClass?}/{activeRace?}/")]
+
         public IActionResult Index(PlayerListViewModel model)
         {
             model.Races = context.Races.ToList();
@@ -28,7 +30,7 @@ namespace FinalCIS174.Controllers
             session.SetActiveRace(model.ActiveRace);
 
             int? count = session.GetMyPlayerCount();
-            if(count == null)
+            if (count == null)
             {
                 var cookies = new PlayerCookies(Request.Cookies);
                 string[] ids = cookies.GetMyPlayerIds();
@@ -50,7 +52,7 @@ namespace FinalCIS174.Controllers
 
             return View(model);
         }
-
+        [Route("player/{action}/{id?}")]
         public IActionResult Details(string id)
         {
             var session = new PlayerSession(HttpContext.Session);
@@ -58,8 +60,8 @@ namespace FinalCIS174.Controllers
             {
                 Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
                 ActiveRace = session.GetActiveRace(),
-                ActiveClass = session.GetActiveClass()
-            };
+                ActiveClass = session.GetActiveClass(),
+        };
             return View(model);
         }
 
@@ -113,6 +115,11 @@ namespace FinalCIS174.Controllers
                 return View(model);
             }
 
+        }
+        [NonAction]
+        public string GetSlug(string name)
+        {
+            return name.Replace(' ', '-').ToLower();
         }
     }
 }
