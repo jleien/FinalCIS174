@@ -9,7 +9,6 @@ namespace FinalCIS174.Controllers
 {
     //Uncomment for players to have an account to use the app
     [Authorize]
-
     public class PlayerController : Controller
     {
         private DNDContext context;
@@ -18,7 +17,7 @@ namespace FinalCIS174.Controllers
         {
             context = ctx;
         }
-        [Route("{controller}/{activeClass?}/{activeRace?}/")]
+        [Route("{controller}/{action}/{activeClass?}/{activeRace?}/")]
 
         public IActionResult Index(PlayerListViewModel model)
         {
@@ -52,7 +51,7 @@ namespace FinalCIS174.Controllers
 
             return View(model);
         }
-        [Route("player/{action}/{id?}")]
+        [Route("{controller}/{action}/{id?}")]
         public IActionResult Details(string id)
         {
             var session = new PlayerSession(HttpContext.Session);
@@ -87,7 +86,6 @@ namespace FinalCIS174.Controllers
                     ActiveCat = session.GetActiveClass()
                 });
         }
-
         public IActionResult AddPlayer()
         {
             var player = new Player();
