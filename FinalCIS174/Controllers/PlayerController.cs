@@ -19,8 +19,8 @@ namespace FinalCIS174.Controllers
         {
             context = ctx;
         }
+        //route
         [Route("{controller}/{action}/{activeClass?}/{activeRace?}/")]
-
         public IActionResult Index(PlayerListViewModel model)
         {
             model.Races = context.Races.ToList();
@@ -53,7 +53,7 @@ namespace FinalCIS174.Controllers
 
             return View(model);
         }
-        [Route("player/{action}/{id?}")]
+        [Route("{controller}/{action}/{id?}")]
         public IActionResult Details(string id)
         {
             var session = new PlayerSession(HttpContext.Session);
@@ -74,9 +74,23 @@ namespace FinalCIS174.Controllers
 
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
+            bool findChar = false;
 
-            //cant find duplicates
-            if (players != players.Distinct())
+            foreach (var player in players)
+            {
+                //If dupe is found set to true and break out of loop
+                if (player.PlayerID == model.Player.PlayerID)
+                {
+                    findChar = true;
+                    break;
+                }
+                else
+                {
+                    findChar = false;
+                }
+            }
+
+            if (findChar)
             {
                 TempData["message"] = $"this is already a member of your party.";
             }
@@ -91,7 +105,7 @@ namespace FinalCIS174.Controllers
                 TempData["message"] = $"{model.Player.Name} added to your party";
             }
 
-   
+
 
             return RedirectToAction("Index",
                 new
@@ -100,7 +114,6 @@ namespace FinalCIS174.Controllers
                     ActiveCat = session.GetActiveClass()
                 });
         }
-
         public IActionResult AddPlayer()
         {
             var player = new Player();
@@ -129,17 +142,18 @@ namespace FinalCIS174.Controllers
             }
 
         }
-
-        public ActionResult EditPlayer(string? PlayerID)
+        [Route("{controller}/{action}/{id?}")]
+        public ActionResult EditPlayer(string PlayerID)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
             ViewBag.Classes = context.Classes.ToList();
             ViewBag.Races = context.Races.ToList();
             return View(data);
         }
-
+        
 
         [HttpPost]
+        [Route("{controller}/{action}/{id?}")]
         public ActionResult EditPlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
@@ -155,12 +169,22 @@ namespace FinalCIS174.Controllers
                 return RedirectToAction("Index");
             }
             else
+            {
                 ViewBag.Classes = context.Classes.ToList();
                 ViewBag.Races = context.Races.ToList();
                 return View(model);
+            }
         }
-
+        [Route("{controller}/{action}/{id?}")]
+        public ActionResult DeletePlayer(string PlayerID)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+            ViewBag.Classes = context.Classes.ToList();
+            ViewBag.Races = context.Races.ToList();
+            return View(data);
+        }
         [HttpPost]
+        [Route("{controller}/{action}/{id?}")]
         public ActionResult DeletePlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
@@ -172,9 +196,12 @@ namespace FinalCIS174.Controllers
                 return RedirectToAction("Index");
             }
             else
+            {
                 ViewBag.Classes = context.Classes.ToList();
                 ViewBag.Races = context.Races.ToList();
                 return View(model);
+            }
+
         }
         [NonAction]
         public string GetSlug(string name)
