@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FinalCIS174",
+    "\\FinalCIS174\\Controllers"
   ],
-  "SelectedNode": "\\C:\\Users\\kajak\\Source\\Repos\\FinalCIS174",
+  "SelectedNode": "\\FinalCIS174\\Controllers\\PlayerController.cs",
   "PreviewInSolutionExplorer": false
 }
