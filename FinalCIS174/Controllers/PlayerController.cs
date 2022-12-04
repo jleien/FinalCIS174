@@ -18,7 +18,7 @@ namespace FinalCIS174.Controllers
         {
             context = ctx;
         }
-        [Route("{controller}/{activeClass?}/{activeRace?}/")]
+        [Route("{controller}/{action}/{activeClass?}/{activeRace?}/")]
 
         public IActionResult Index(PlayerListViewModel model)
         {
