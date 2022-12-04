@@ -26,6 +26,7 @@ namespace FinalCIS174.Models
                 new Class { ClassID = "wizard", Name = "Wizard" },
                 new Class { ClassID = "paladin", Name = "Paladin" }
                 //test comment
+
             );
 
             modelBuilder.Entity<Race>().HasData(
@@ -33,6 +34,8 @@ namespace FinalCIS174.Models
                 new Race { RaceID = "elf", Name = "Elf" },
                 new Race { RaceID = "orc", Name = "Orc" },
                 new Race { RaceID = "dwarf", Name = "Dwarf" }
+                //test
+
                 );
             modelBuilder.Entity<Player>().HasData(
                 new { PlayerID = "1", Name = "Finn Ahfsinguard", Level = 12, ClassID = "fighter", RaceID = "human" }

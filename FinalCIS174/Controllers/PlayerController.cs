@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Net.Sockets;
 
@@ -9,6 +10,7 @@ namespace FinalCIS174.Controllers
 {
     //Uncomment for players to have an account to use the app
     [Authorize]
+
     public class PlayerController : Controller
     {
         private DNDContext context;
@@ -51,7 +53,7 @@ namespace FinalCIS174.Controllers
 
             return View(model);
         }
-        [Route("{controller}/{action}/{id?}")]
+        [Route("player/{action}/{id?}")]
         public IActionResult Details(string id)
         {
             var session = new PlayerSession(HttpContext.Session);
@@ -65,19 +67,31 @@ namespace FinalCIS174.Controllers
         }
 
         [HttpPost]
+        //add party members
         public RedirectToActionResult Add(PlayerViewModel model)
         {
             model.Player = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => c.PlayerID == model.Player.PlayerID).FirstOrDefault();
 
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
-            players.Add(model.Player);
-            session.SetMyPlayers(players);
 
-            var cookies = new PlayerCookies(Response.Cookies);
-            cookies.SetMyPlayerIds(players);
+            //cant find duplicates
+            if (players != players.Distinct())
+            {
+                TempData["message"] = $"this is already a member of your party.";
+            }
+            else
+            {
+                players.Add(model.Player);
+                session.SetMyPlayers(players);
 
-            TempData["message"] = $"{model.Player.Name} added to your party";
+                var cookies = new PlayerCookies(Response.Cookies);
+                cookies.SetMyPlayerIds(players);
+
+                TempData["message"] = $"{model.Player.Name} added to your party";
+            }
+
+   
 
             return RedirectToAction("Index",
                 new
@@ -86,6 +100,7 @@ namespace FinalCIS174.Controllers
                     ActiveCat = session.GetActiveClass()
                 });
         }
+
         public IActionResult AddPlayer()
         {
             var player = new Player();
@@ -113,6 +128,53 @@ namespace FinalCIS174.Controllers
                 return View(model);
             }
 
+        }
+
+        public ActionResult EditPlayer(string? PlayerID)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+            ViewBag.Classes = context.Classes.ToList();
+            ViewBag.Races = context.Races.ToList();
+            return View(data);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditPlayer(string PlayerID, Player model)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+
+            if (data != null)
+            {
+                data.PlayerID = model.PlayerID;
+                data.Name = model.Name;
+                data.Level = model.Level;
+                data.ClassID = model.ClassID;
+                data.RaceID = model.RaceID;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult DeletePlayer(string PlayerID, Player model)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+
+            if (data != null)
+            {
+                context.Remove(data);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(model);
         }
         [NonAction]
         public string GetSlug(string name)
