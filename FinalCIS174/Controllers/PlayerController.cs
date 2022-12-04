@@ -128,7 +128,6 @@ namespace FinalCIS174.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult EditPlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
@@ -141,10 +140,12 @@ namespace FinalCIS174.Controllers
                 data.ClassID = model.ClassID;
                 data.RaceID = model.RaceID;
                 context.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Index");
             }
             else
-                return View();
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(model);
         }
 
         [NonAction]
