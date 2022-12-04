@@ -29,6 +29,9 @@
                     <a asp-action="EditPlayer" style="height:fit-content; width:200px" class="btn btn-primary"
                        asp-route-activeRace="@Model.ActiveRace"
                        asp-route-activeClass="@Model.ActiveClass">Edit</a>
+
+                    <input type="submit" value="Delete" class="btn btn-danger" asp-action="DeletePlayer" />
+
                     <button style="height:fit-content; width:200px" type="submit" class="btn btn-primary">
                         Add to Party
                     </button>

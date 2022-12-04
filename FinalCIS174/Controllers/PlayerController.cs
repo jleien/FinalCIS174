@@ -148,6 +148,22 @@ namespace FinalCIS174.Controllers
                 return View(model);
         }
 
+        [HttpPost]
+        public ActionResult DeletePlayer(string PlayerID, Player model)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+
+            if (data != null)
+            {
+                context.Remove(data);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(model);
+        }
         [NonAction]
         public string GetSlug(string name)
         {
