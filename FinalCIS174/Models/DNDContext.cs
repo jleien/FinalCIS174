@@ -25,6 +25,7 @@ namespace FinalCIS174.Models
                 new Class { ClassID = "fighter", Name = "Fighter" },
                 new Class { ClassID = "wizard", Name = "Wizard" },
                 new Class { ClassID = "paladin", Name = "Paladin" }
+                //test comment
             );
 
             modelBuilder.Entity<Race>().HasData(
