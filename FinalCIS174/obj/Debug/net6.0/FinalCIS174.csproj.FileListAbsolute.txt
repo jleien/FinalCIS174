@@ -271,3 +271,10 @@ C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\refin
 C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.pdb
 C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.genruntimeconfig.cache
 C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\ref\FinalCIS174.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

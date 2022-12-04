@@ -25,11 +25,13 @@
                     <a asp-action="Index" style="height:fit-content; width:200px" class="btn btn-primary"
                        asp-route-activeRace="@Model.ActiveRace"
                        asp-route-activeClass="@Model.ActiveClass">Return to Home Page</a>
+
                     <button style="height:fit-content; width:200px" type="submit" class="btn btn-primary">
                         Add to Party
                     </button>
                     <input type="hidden" asp-for="Player.PlayerID" />
                 </form>
+                 @Html.ActionLink("Edit", "EditPlayer", new { id = Model.Player.PlayerID })
             </li>
         </ul>
     </div>
