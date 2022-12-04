@@ -75,7 +75,7 @@ namespace FinalCIS174.Controllers
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
             bool findChar = false;
-
+            //Stop duplication method
             foreach (var player in players)
             {
                 //If dupe is found set to true and break out of loop
