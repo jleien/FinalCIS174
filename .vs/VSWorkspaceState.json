@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FinalCIS174",
+    "\\FinalCIS174\\Controllers",
+    "\\FinalCIS174\\Models"
   ],
+  "SelectedNode": "\\FinalCIS174.sln",
   "PreviewInSolutionExplorer": false
 }
