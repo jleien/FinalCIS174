@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Net.Sockets;
 
@@ -73,13 +74,24 @@ namespace FinalCIS174.Controllers
 
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
-            players.Add(model.Player);
-            session.SetMyPlayers(players);
 
-            var cookies = new PlayerCookies(Response.Cookies);
-            cookies.SetMyPlayerIds(players);
+            //cant find duplicates
+            if (players != players.Distinct())
+            {
+                TempData["message"] = $"this is already a member of your party.";
+            }
+            else
+            {
+                players.Add(model.Player);
+                session.SetMyPlayers(players);
 
-            TempData["message"] = $"{model.Player.Name} added to your party";
+                var cookies = new PlayerCookies(Response.Cookies);
+                cookies.SetMyPlayerIds(players);
+
+                TempData["message"] = $"{model.Player.Name} added to your party";
+            }
+
+   
 
             return RedirectToAction("Index",
                 new
