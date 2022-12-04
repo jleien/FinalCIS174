@@ -5,6 +5,8 @@ namespace FinalCIS174.Models.UserLogin
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "Please enter a username.")]
+        [RegularExpression("^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$",
+    ErrorMessage = "The username cannot have special characters")]
         [StringLength(16)]
         public string Username { get; set; }
 
