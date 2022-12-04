@@ -117,6 +117,36 @@ namespace FinalCIS174.Controllers
             }
 
         }
+
+        public ActionResult EditPlayer(string? PlayerID)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+            ViewBag.Classes = context.Classes.ToList();
+            ViewBag.Races = context.Races.ToList();
+            return View(data);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPlayer(string PlayerID, Player model)
+        {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+
+            if (data != null)
+            {
+                data.PlayerID = model.PlayerID;
+                data.Name = model.Name;
+                data.Level = model.Level;
+                data.ClassID = model.ClassID;
+                data.RaceID = model.RaceID;
+                context.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            else
+                return View();
+        }
+
         [NonAction]
         public string GetSlug(string name)
         {
