@@ -3838,23 +3838,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thefo\\.nuget\\packages\\": {},
+    "C:\\Users\\Quinn\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+      "projectUniqueName": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
       "projectName": "FinalCIS174",
-      "projectPath": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
-      "packagesPath": "C:\\Users\\thefo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\obj\\",
+      "projectPath": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+      "packagesPath": "C:\\Users\\Quinn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\thefo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Quinn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3924,7 +3924,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
