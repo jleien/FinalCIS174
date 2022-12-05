@@ -31,12 +31,15 @@
         <ul class="list-inline">
             @foreach (Player player in Model.Players)
             {
+                <br>
                 <li class="list-inline-item">
+
                     <a asp-action="Details" asp-route-id="@player.PlayerID">
                         <h1>
                             @player.Name | @player.Class.Name
                         </h1>
                     </a>
+                    <br>
                 </li>
             }
         </ul>
