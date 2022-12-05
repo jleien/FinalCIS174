@@ -49,7 +49,7 @@ namespace FinalCIS174.Models
 
                 );
             modelBuilder.Entity<Player>().HasData(
-                new { PlayerID = "1", Name = "Finn Ahfsinguard", Level = 12, ClassID = "fighter", RaceID = "human" }
+                new { PlayerID = "1", Name = "Finn Ahfsinguard", Level = 12, ClassID = "fighter", RaceID = "human", CreatorOfCharacter="DIO" }
                 );
         }
     }

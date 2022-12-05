@@ -89,7 +89,8 @@ namespace FinalCIS174.Controllers
             ModelState.AddModelError("", "Invalid username/password.");
             return View(model);
         }
-        public ViewResult NoAccess()
+        [Route("{controller}/{action}/{id?}")]
+        public ViewResult AccessDenied()
         {
             return View();
         }

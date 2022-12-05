@@ -125,6 +125,7 @@ namespace FinalCIS174.Controllers
                 }
             }
             player.PlayerID = Convert.ToString(playerID);
+            player.CreatorOfCharacter = User.Identity.Name;
             ViewBag.Classes = context.Classes.ToList();
             ViewBag.Races = context.Races.ToList();
             return View(player);
