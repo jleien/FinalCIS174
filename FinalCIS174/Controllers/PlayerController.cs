@@ -67,7 +67,9 @@ namespace FinalCIS174.Controllers
         //add party members
         public RedirectToActionResult Add(PlayerViewModel model)
         {
-            model.Player = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => c.PlayerID == model.Player.PlayerID).FirstOrDefault();
+            model.Player = context.Players.Include(c => c.Race).
+                Include(c => c.Class).Where(c => c.PlayerID == model.
+                Player.PlayerID).FirstOrDefault();
 
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
