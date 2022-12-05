@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj": {}
+    "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj": {
+    "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+        "projectUniqueName": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
         "projectName": "FinalCIS174",
-        "projectPath": "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+        "projectPath": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
         "packagesPath": "C:\\Users\\kajak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\obj\\",
+        "outputPath": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kajak\\AppData\\Roaming\\NuGet\\NuGet.Config",

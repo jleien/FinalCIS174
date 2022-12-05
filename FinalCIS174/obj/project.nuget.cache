@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "27xCB6m1kh3pMgZTzF0O5Y/Ga78cMom/WbBWMNfmLLsUWHk2Bt/P/kLO9uTYgjicfd337JQ4wB+z4jNGXYOfAA==",
+  "dgSpecHash": "mralRGcI5ndtAgYdN91iDS1RsIoy+2edqbtoiDt67fBhGn2tkGsYq+THsIW4kHrqk6fcLKRUnRPCKp+TC3Z/UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kajak\\source\\repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+  "projectFilePath": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kajak\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\kajak\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
