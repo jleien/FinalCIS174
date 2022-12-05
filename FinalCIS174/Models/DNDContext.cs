@@ -22,8 +22,13 @@ namespace FinalCIS174.Models
                 new Class { ClassID = "barbarian", Name = "Barbarian" },
                 new Class { ClassID = "bard", Name = "Bard" },
                 new Class { ClassID = "cleric", Name = "Cleric" },
+                new Class { ClassID = "druid", Name = "Druid" },
                 new Class { ClassID = "fighter", Name = "Fighter" },
+                new Class { ClassID = "gunzerker", Name = "Gunzerker" },
+                new Class { ClassID = "monk", Name = "Monk" },
+                new Class { ClassID = "standuser", Name = "Stand-User" },
                 new Class { ClassID = "wizard", Name = "Wizard" },
+                new Class { ClassID = "operator", Name = "Operator" },
                 new Class { ClassID = "paladin", Name = "Paladin" }
                 //test comment
 
@@ -31,8 +36,14 @@ namespace FinalCIS174.Models
 
             modelBuilder.Entity<Race>().HasData(
                 new Race { RaceID = "human", Name = "Human" },
+                new Race { RaceID = "aasimar", Name = "Aasimar" },
+                new Race { RaceID = "celestial", Name = "Celestial" },
+                new Race { RaceID = "terra", Name = "Terra" },
+                new Race { RaceID = "tabaxi", Name = "Tabaxi" },
                 new Race { RaceID = "elf", Name = "Elf" },
+                new Race { RaceID = "tiefling", Name = "Tiefling" },
                 new Race { RaceID = "orc", Name = "Orc" },
+                new Race { RaceID = "plasmoid", Name = "Plasmoid" },
                 new Race { RaceID = "dwarf", Name = "Dwarf" }
                 //test
 
