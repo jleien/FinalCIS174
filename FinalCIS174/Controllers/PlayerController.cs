@@ -1,4 +1,5 @@
 ﻿using FinalCIS174.Models;
+using FinalCIS174.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +15,7 @@ namespace FinalCIS174.Controllers
     public class PlayerController : Controller
     {
         private DNDContext context;
-
-        public PlayerController(DNDContext ctx)
-        {
-            context = ctx;
-        }
+        public PlayerController(DNDContext ctx) => context = ctx;
         //route
         [Route("{controller}/{action}/{activeClass?}/{activeRace?}/")]
         public IActionResult Index(PlayerListViewModel model)
@@ -128,6 +125,7 @@ namespace FinalCIS174.Controllers
                 }
             }
             player.PlayerID = Convert.ToString(playerID);
+            player.CreatorOfCharacter = User.Identity.Name;
             ViewBag.Classes = context.Classes.ToList();
             ViewBag.Races = context.Races.ToList();
             return View(player);

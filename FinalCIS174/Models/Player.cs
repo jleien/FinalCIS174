@@ -21,5 +21,6 @@ namespace FinalCIS174.Models
         public string RaceID { get; set; }
 
         public Race? Race { get; set; }
+        public string CreatorOfCharacter { get; set; }
     }
 }

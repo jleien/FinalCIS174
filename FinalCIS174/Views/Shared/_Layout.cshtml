@@ -28,6 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="Index">Player View</a>
                         </li>
+                        
                         <li class="nav-item">
                             @if (!ViewContext.View.Path.Contains("Party"))
                             {
@@ -63,14 +64,31 @@
                     @inject SignInManager<User> signInManager
                     @if (signInManager.IsSignedIn(User))
                     {
-                        <li class="nav-item">Hello, @User.Identity.Name!</li>
-                        <li class="nav-item">
-                            <form method="post" asp-action="Logout" asp-controller="Account"
+                        string userLog = User.Identity.Name;
+                        
+                        @if(userLog == "DIO") {
+                                <li class="nav-item">Hello Admin, @User.Identity.Name!</li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Player" asp-action="Index">Admin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form method="post" asp-action="Logout" asp-controller="Account"
                                   asp-area="">
-                                <input type="submit" value="Logout"
+                                        <input type="submit" value="Logout"
                                        class="btn btn-outline-dark" />
-                            </form>
-                        </li>
+                                    </form>
+                                </li>
+                        }
+                        else {
+                                <li class="nav-item">Hello, @User.Identity.Name!</li>
+                                <li class="nav-item">
+                                    <form method="post" asp-action="Logout" asp-controller="Account"
+                                  asp-area="">
+                                        <input type="submit" value="Logout"
+                                       class="btn btn-outline-dark" />
+                                    </form>
+                                </li>
+                        }
                     }
                     else {
                             <li class="nav-item">

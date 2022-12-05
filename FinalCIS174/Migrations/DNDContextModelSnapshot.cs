@@ -102,6 +102,10 @@ namespace FinalCIS174.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CreatorOfCharacter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
@@ -126,6 +130,7 @@ namespace FinalCIS174.Migrations
                         {
                             PlayerID = "1",
                             ClassID = "fighter",
+                            CreatorOfCharacter = "DIO",
                             Level = 12,
                             Name = "Finn Ahfsinguard",
                             RaceID = "human"
