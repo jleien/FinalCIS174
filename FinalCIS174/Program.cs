@@ -1,5 +1,6 @@
 using FinalCIS174.Models;
 using FinalCIS174.Models.UserLogin;
+using FinalCIS174.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,8 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson();
 //DBContext
 builder.Services.AddDbContext<DNDContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DNDContext")));
+//Dependency Injection
+builder.Services.AddScoped<IPlayerRepository<Player>, PlayerRepository>();
 builder.Services.AddIdentity<User, IdentityRole>(options => {
     //Password must be 8 characters long with at least one lowercase letter,
     //one uppercase letter, one number, and one special character
