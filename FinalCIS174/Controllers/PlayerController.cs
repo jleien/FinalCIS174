@@ -46,8 +46,8 @@ namespace FinalCIS174.Controllers
             if (model.ActiveRace != "all")
                 query = query.Where(
                     t => t.Race.RaceID.ToLower() == model.ActiveRace.ToLower());
-            
-            model.Players = query.Where(c=> c.CreatorOfCharacter.Contains(User.Identity.Name)).ToList();
+
+            model.Players = query.Where(c => c.CreatorOfCharacter.Equals(User.Identity.Name)).ToList();
 
             return View(model);
         }
