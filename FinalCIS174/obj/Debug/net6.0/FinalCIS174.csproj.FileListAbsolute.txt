@@ -272,3 +272,4 @@ C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\Final
 C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\FinalCIS174.genruntimeconfig.cache
 C:\Users\Quinn\OneDrive\Documents\FinalCIS174\FinalCIS174\obj\Debug\net6.0\ref\FinalCIS174.dll
 C:\Users\thefo\Source\Repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\kajak\source\repos\FinalCIS174\FinalCIS174\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
