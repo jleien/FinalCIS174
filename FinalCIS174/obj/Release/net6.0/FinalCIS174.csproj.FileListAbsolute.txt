@@ -89,3 +89,4 @@ C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\obj\Release\net6.0\refint\Fi
 C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\obj\Release\net6.0\FinalCIS174.pdb
 C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\obj\Release\net6.0\FinalCIS174.genruntimeconfig.cache
 C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\obj\Release\net6.0\ref\FinalCIS174.dll
+C:\Users\kajak\Source\Repos\FinalCIS174\FinalCIS174\obj\Release\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
