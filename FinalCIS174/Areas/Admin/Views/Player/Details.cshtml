@@ -1,0 +1,41 @@
+﻿@model PlayerViewModel 
+@{
+    ViewData["Title"] = "Player Details";
+}
+
+<h2 class="text-center p-2">Player Details</h2>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <ul class="list-group text-center">
+            <li class="list-group-item">
+                <h3>@Model.Player.Name</h3>
+            </li>
+            <li class="list-group-item">
+                <h4>Race: @Model.Player.Race.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <h4>Class: @Model.Player.Class.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <h4>Level: @Model.Player.Level</h4>
+            </li>
+            <li class="list-group-item">
+                <form asp-action="Add" method="post">
+                    <a asp-action="Index" style="height:fit-content; width:200px" class="btn btn-primary"
+                       asp-route-activeRace="@Model.ActiveRace"
+                       asp-route-activeClass="@Model.ActiveClass">Return to Home Page</a>
+
+                    <a asp-action="EditPlayer" asp-route-PlayerID="@Model.Player.PlayerID" style="height:fit-content; width:200px" class="btn btn-primary">Edit</a>
+
+                    <a asp-action="DeletePlayer" asp-route-PlayerID="@Model.Player.PlayerID" style="height:fit-content; width:200px" class="btn btn-danger">Delete</a>
+
+                    <button style="height:fit-content; width:200px" type="submit" class="btn btn-primary">
+                        Add to Party
+                    </button>
+                    <input type="hidden" asp-for="Player.PlayerID" />
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
