@@ -6,9 +6,8 @@
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form asp-action="EditPlayer" method="post">
-
-
-    <div class="form-group">
+@*    read only for playerid
+*@  <div class="form-group">
         <label asp-for="PlayerID">Player ID:</label>
         <input type="text" asp-for="PlayerID" class="form-control" readonly>
     </div>

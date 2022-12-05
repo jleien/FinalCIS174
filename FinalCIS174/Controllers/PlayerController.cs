@@ -75,7 +75,7 @@ namespace FinalCIS174.Controllers
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
             bool findChar = false;
-
+            //Stop duplication method
             foreach (var player in players)
             {
                 //If dupe is found set to true and break out of loop
@@ -117,7 +117,17 @@ namespace FinalCIS174.Controllers
         public IActionResult AddPlayer()
         {
             var player = new Player();
-
+            var data = context.Players.ToList();
+            int playerID = 1;
+            foreach(var players in data)
+            {
+                int incrementID = Convert.ToInt16(players.PlayerID);
+                if(incrementID == playerID)
+                {
+                    playerID++;
+                }
+            }
+            player.PlayerID = Convert.ToString(playerID);
             ViewBag.Classes = context.Classes.ToList();
             ViewBag.Races = context.Races.ToList();
             return View(player);
