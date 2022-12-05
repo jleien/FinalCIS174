@@ -22,7 +22,7 @@
             </li>
             <li class="list-group-item">
                 <form asp-action="Add" method="post">
-                    <a asp-action="Index" style="height:fit-content; width:200px" class="btn btn-primary"
+                    <a asp-action="Index" style="height:fit-content; width:200px;" class="btn btn-primary"
                        asp-route-activeRace="@Model.ActiveRace"
                        asp-route-activeClass="@Model.ActiveClass">Return to Home Page</a>
 
@@ -30,7 +30,7 @@
 
                     <a asp-action="DeletePlayer" asp-route-PlayerID="@Model.Player.PlayerID" style="height:fit-content; width:200px" class="btn btn-danger">Delete</a>
 
-                    <button style="height:fit-content; width:200px" type="submit" class="btn btn-primary">
+                    <button style="height:fit-content; width:200px;" type="submit" class="btn btn-primary">
                         Add to Party
                     </button>
                     <input type="hidden" asp-for="Player.PlayerID" />
