@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinalCIS174.styles.css" asp-append-version="true" />
-
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TTRPG Character Creator</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Admin View</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,35 +20,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Exit Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="Index">Player View</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            @if (!ViewContext.View.Path.Contains("Party"))
-                            {
-                                var session = new PlayerSession(Context.Session);
-                                var count = session.GetMyPlayerCount();
-                                @if(count == null){
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
-                                        My Party
-                                    </a>
-                                }
-                                else {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
-                                    My Party: @(session.GetMyPlayerCount())
-                                </a>
-                                }
-                            } else {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
-                                        My Party
-                                    </a>
-                            }
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Player" asp-action="Index">Admin Player View</a>
                         </li>
                         <li>
 @*                            Get Temp data message *@                            

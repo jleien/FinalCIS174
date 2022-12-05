@@ -1,0 +1,45 @@
+﻿@model Player
+@addTagHelper *, FinalCIS174
+
+<h2>Edit Player</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="EditPlayer" method="post">
+@*    read only for playerid
+*@  <div class="form-group">
+        <label asp-for="PlayerID">Player ID:</label>
+        <input type="text" asp-for="PlayerID" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="Name">Name:</label>
+        <input type="text" asp-for="Name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Level">Level:</label>
+        <input type="number" asp-for="Level" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Class">Class:</label>
+        <select asp-for="ClassID" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Classes, "ClassID", "Name"))">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RaceID">Race:</label>
+        <select asp-for="RaceID" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Races, "RaceID", "Name"))">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <vc:status></vc:status>
+    <submit-button class="add">Submit Edit</submit-button>
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
