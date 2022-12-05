@@ -21,6 +21,10 @@
                 <h4>Level: @Model.Player.Level</h4>
             </li>
             <li class="list-group-item">
+                <h4>Creator: @Model.Player.CreatorOfCharacter</h4>
+            </li>
+
+            <li class="list-group-item">
                 <form asp-action="Add" method="post">
                     <a asp-action="Index" style="height:fit-content; width:200px" class="btn btn-primary"
                        asp-route-activeRace="@Model.ActiveRace"
