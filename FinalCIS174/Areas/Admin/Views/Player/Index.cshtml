@@ -4,6 +4,7 @@
 }
 <div class="row">
     <div class="col-sm-3">
+        <a style="width:fit-content;font-size:2em; margin-top:10px; margin-left:10px; padding:10px;" class="btn btn-primary" asp-action="AddPlayer"><b>Add New Player</b></a>
         <h3 class="mt-3">Class</h3>
         <div class="list-group">
             @foreach (Class cla in Model.Classes)
@@ -44,5 +45,4 @@
             }
         </ul>
     </div>
-    <a  style="width:fit-content; margin-top:10px; margin-left:10px" class="btn btn-primary" asp-action="AddPlayer"><b>Add new player</b></a>
 </div>
