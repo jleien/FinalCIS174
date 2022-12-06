@@ -118,15 +118,12 @@ namespace FinalCIS174.Controllers
         {
             var player = new Player();
             var data = context.Players.ToList();
-            int playerID = 1;
-            foreach(var players in data)
-            {
-                int incrementID = Convert.ToInt16(players.PlayerID);
-                if(incrementID == playerID)
-                {
-                    playerID++;
-                }
-            }
+            //Auto increment player id
+            var playerID = 0;
+            IQueryable<Player> query = context.Players;
+            var findMax = query.Count();
+            playerID = findMax+1;
+
             player.PlayerID = Convert.ToString(playerID);
             player.CreatorOfCharacter = User.Identity.Name;
             ViewBag.Classes = context.Classes.ToList();

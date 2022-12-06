@@ -1,4 +1,5 @@
 ﻿using FinalCIS174.Models;
+using FinalCIS174.Models.UserLogin;
 using FinalCIS174.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,35 +21,41 @@ namespace FinalCIS174.Areas.Admin.Controllers
         [Route("{area}/{controller}/{action}/{activeClass?}/{activeRace?}/")]
         public IActionResult Index(PlayerListViewModel model)
         {
-            model.Races = context.Races.ToList();
-            model.Classes = context.Classes.ToList();
-
-            var session = new PlayerSession(HttpContext.Session);
-            session.SetActiveClass(model.ActiveClass);
-            session.SetActiveRace(model.ActiveRace);
-
-            int? count = session.GetMyPlayerCount();
-            if (count == null)
+            if (User.Identity.Name == "DIO")
             {
-                var cookies = new PlayerCookies(Request.Cookies);
-                string[] ids = cookies.GetMyPlayerIds();
+                model.Races = context.Races.ToList();
+                model.Classes = context.Classes.ToList();
 
-                List<Player> myplayers = new List<Player>();
-                if (ids.Length > 0)
-                    myplayers = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => ids.Contains(c.PlayerID)).ToList();
-                session.SetMyPlayers(myplayers);
+                var session = new PlayerSession(HttpContext.Session);
+                session.SetActiveClass(model.ActiveClass);
+                session.SetActiveRace(model.ActiveRace);
+
+                int? count = session.GetMyPlayerCount();
+                if (count == null)
+                {
+                    var cookies = new PlayerCookies(Request.Cookies);
+                    string[] ids = cookies.GetMyPlayerIds();
+
+                    List<Player> myplayers = new List<Player>();
+                    if (ids.Length > 0)
+                        myplayers = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => ids.Contains(c.PlayerID)).ToList();
+                    session.SetMyPlayers(myplayers);
+                }
+
+                IQueryable<Player> query = context.Players;
+                if (model.ActiveClass != "all")
+                    query = query.Where(
+                        t => t.Class.ClassID.ToLower() == model.ActiveClass.ToLower());
+                if (model.ActiveRace != "all")
+                    query = query.Where(
+                        t => t.Race.RaceID.ToLower() == model.ActiveRace.ToLower());
+                model.Players = query.ToList();
+                return View(model);
             }
-
-            IQueryable<Player> query = context.Players;
-            if (model.ActiveClass != "all")
-                query = query.Where(
-                    t => t.Class.ClassID.ToLower() == model.ActiveClass.ToLower());
-            if (model.ActiveRace != "all")
-                query = query.Where(
-                    t => t.Race.RaceID.ToLower() == model.ActiveRace.ToLower());
-            model.Players = query.ToList();
-
-            return View(model);
+            else
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
         }
         [Route("{area}/{controller}/{action}/{id?}")]
         public IActionResult Details(string id)
@@ -59,7 +66,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
                 Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
                 ActiveRace = session.GetActiveRace(),
                 ActiveClass = session.GetActiveClass(),
-        };
+            };
             return View(model);
         }
 
@@ -115,15 +122,12 @@ namespace FinalCIS174.Areas.Admin.Controllers
         {
             var player = new Player();
             var data = context.Players.ToList();
-            int playerID = 1;
-            foreach(var players in data)
-            {
-                int incrementID = Convert.ToInt16(players.PlayerID);
-                if(incrementID == playerID)
-                {
-                    playerID++;
-                }
-            }
+            //Auto increment player id
+            var playerID = 0;
+            IQueryable<Player> query = context.Players;
+            var findMax = query.Count();
+            playerID = findMax + 1;
+
             player.PlayerID = Convert.ToString(playerID);
             player.CreatorOfCharacter = User.Identity.Name;
             ViewBag.Classes = context.Classes.ToList();
