@@ -35,3 +35,39 @@ body {
     display: grid;
     place-items: center;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+ul {
+    list-style-position: outside;
+}
+    ul li:nth-child(3) {
+        font-style: italic;
+        background-color: #f2f2f2;
+    }
+
+    ul li:nth-child(4) {
+        font-style: italic;
+        background-color: #f2f2f2;
+    }
+
+    ul li:nth-child(5) {
+        font-style: italic;
+        background-color: #7D7D7D;
+    }
+
+    ul li:nth-child(6) {
+        font-style: italic;
+        background-color: #7D7D7D;
+    }
