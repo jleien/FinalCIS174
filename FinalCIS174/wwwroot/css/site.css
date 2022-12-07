@@ -2,17 +2,86 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
   margin-bottom: 60px;
 }
+
+body {
+    color: #797924;
+    font-family: 'Georgia', 'Palatino', 'Palatino Linotype', 'Times New Roman', 'serif';
+    font-size: 14px;
+    line-height: 1.5em;
+    padding: 1em;
+}
+body {
+    width: 100%;
+    background-image: url("~/images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+ul {
+    list-style-position: outside;
+
+}
+
+    ul li:nth-child(1) {
+        background-color: #999999;
+    }
+
+    ul li:nth-child(2) {
+        background-color: #999999;
+    }
+
+    ul li:nth-child(3) {
+        font-style: italic;
+        background-color: #7d7d7d;
+    }
+
+    ul li:nth-child(4) {
+        font-style: italic;
+        background-color: #7d7d7d;
+    }
+
+    ul li:nth-child(5) {
+        font-style: italic;
+        background-color: #424242;
+        color: #000000;
+        text-shadow: 2px 4px 6px white;
+    }
+
+    ul li:nth-child(6) {
+        color: #000000;
+        text-shadow: 2px 2px 4px white;
+        font-style: italic;
+        background-color: #424242;
+    }

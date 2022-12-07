@@ -46,8 +46,8 @@ namespace FinalCIS174.Controllers
             if (model.ActiveRace != "all")
                 query = query.Where(
                     t => t.Race.RaceID.ToLower() == model.ActiveRace.ToLower());
-            
-            model.Players = query.Where(c=> c.CreatorOfCharacter.Contains(User.Identity.Name)).ToList();
+
+            model.Players = query.Where(c => c.CreatorOfCharacter.Equals(User.Identity.Name)).ToList();
 
             return View(model);
         }
@@ -68,7 +68,9 @@ namespace FinalCIS174.Controllers
         //add party members
         public RedirectToActionResult Add(PlayerViewModel model)
         {
-            model.Player = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => c.PlayerID == model.Player.PlayerID).FirstOrDefault();
+            model.Player = context.Players.Include(c => c.Race).
+                Include(c => c.Class).Where(c => c.PlayerID == model.
+                Player.PlayerID).FirstOrDefault();
 
             var session = new PlayerSession(HttpContext.Session);
             var players = session.GetMyPlayers();
@@ -116,15 +118,12 @@ namespace FinalCIS174.Controllers
         {
             var player = new Player();
             var data = context.Players.ToList();
-            int playerID = 1;
-            foreach(var players in data)
-            {
-                int incrementID = Convert.ToInt16(players.PlayerID);
-                if(incrementID == playerID)
-                {
-                    playerID++;
-                }
-            }
+            //Auto increment player id
+            var playerID = 0;
+            IQueryable<Player> query = context.Players;
+            var findMax = query.Count();
+            playerID = findMax+1;
+
             player.PlayerID = Convert.ToString(playerID);
             player.CreatorOfCharacter = User.Identity.Name;
             ViewBag.Classes = context.Classes.ToList();

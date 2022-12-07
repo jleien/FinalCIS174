@@ -44,10 +44,15 @@ namespace FinalCIS174.Models
                 new Race { RaceID = "tiefling", Name = "Tiefling" },
                 new Race { RaceID = "orc", Name = "Orc" },
                 new Race { RaceID = "plasmoid", Name = "Plasmoid" },
-                new Race { RaceID = "dwarf", Name = "Dwarf" }
+                new Race { RaceID = "dwarf", Name = "Dwarf" },
                 //test
+                new Race { RaceID = "gnome", Name = "Gnome" },
+                new Race { RaceID = "half-elf", Name = "Half-Elf" },
+                new Race { RaceID = "half-orc", Name = "Half-Orc" },
+                new Race { RaceID = "dragonborn", Name = "Dragonborn" }
 
                 );
+            //sample character
             modelBuilder.Entity<Player>().HasData(
                 new { PlayerID = "1", Name = "Finn Ahfsinguard", Level = 12, ClassID = "fighter", RaceID = "human", CreatorOfCharacter="DIO" }
                 );

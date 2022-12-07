@@ -1,6 +1,8 @@
 ﻿@model Player
 @addTagHelper *, FinalCIS174
-
+@{
+    ViewData["Title"] = "Delete Player";
+}
 <h2>Delete Player: @Model.Name</h2>
 <form asp-action="DeletePlayer" method="post">
     <h4>Level: @Model.Level, Race: @Model.Race.Name, Class: @Model.Class.Name</h4>

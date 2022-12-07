@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinalCIS174.styles.css" asp-append-version="true" />
+
+
 </head>
 <body>
     <header>
@@ -24,6 +26,31 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Player" asp-action="Index">Admin Player View</a>
+                        </li>
+                        <li class="nav-item">
+                            @if (!ViewContext.View.Path.Contains("Party"))
+                            {
+                                var session = new PlayerSession(Context.Session);
+                                var count = session.GetMyPlayerCount();
+                                @if (count == null)
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
+                                        My Party
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
+                                        My Party: @(session.GetMyPlayerCount())
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Party" asp-action="Index">
+                                    My Party
+                                </a>
+                            }
                         </li>
                         <li>
 @*                            Get Temp data message *@                            
