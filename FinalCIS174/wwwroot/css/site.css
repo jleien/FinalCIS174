@@ -24,5 +24,10 @@ body {
     font-size: 12px;
     line-height: 1.5em;
     padding: 1em;
-    background: #fefefe;
+}
+
+body {
+    background-image: url("Images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
