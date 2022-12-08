@@ -10,7 +10,7 @@ using System.Net.Sockets;
 
 namespace FinalCIS174.Areas.Admin.Controllers
 {
-    //Uncomment for players to have an account to use the app
+//add chatacters code
     [Authorize]
     [Area("Admin")]
     public class PlayerController : Controller
