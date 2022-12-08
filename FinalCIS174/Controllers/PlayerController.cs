@@ -60,9 +60,18 @@ namespace FinalCIS174.Controllers
                 Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
                 ActiveRace = session.GetActiveRace(),
                 ActiveClass = session.GetActiveClass(),
-        };
-            return View(model);
+            };
+            if(model.Player.CreatorOfCharacter == User.Identity.Name)
+            {
+                return View(model);
+            }
+            else
+            {
+                TempData["message"] = "This is not your character.";
+                return RedirectToAction("Index");
+            }
         }
+
 
         [HttpPost]
         //add party members
@@ -154,9 +163,18 @@ namespace FinalCIS174.Controllers
         public ActionResult EditPlayer(string PlayerID)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            ViewBag.Classes = context.Classes.ToList();
-            ViewBag.Races = context.Races.ToList();
-            return View(data);
+            if(data.CreatorOfCharacter == User.Identity.Name)
+            {
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(data);
+            }
+            else
+            {
+                TempData["message"] = "This is not your character.";
+                return RedirectToAction("Index");
+            }
+            
         }
         
 
@@ -183,16 +201,25 @@ namespace FinalCIS174.Controllers
                 return View(model);
             }
         }
-        [Route("{controller}/{action}/{id?}")]
+        [Route("{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            ViewBag.Classes = context.Classes.ToList();
-            ViewBag.Races = context.Races.ToList();
-            return View(data);
+            if (data.CreatorOfCharacter == User.Identity.Name)
+            {
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(data);
+            }
+            else
+            {
+                TempData["message"] = "This is not your character.";
+                return RedirectToAction("Index");
+            }
+            
         }
         [HttpPost]
-        [Route("{controller}/{action}/{id?}")]
+        [Route("{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
