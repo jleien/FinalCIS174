@@ -14,12 +14,20 @@ html {
     }
 }
 
+header {
+  float: left;
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 1px 3px #333;
+  z-index: 1;
+}
+
 body {
   margin-bottom: 60px;
 }
 
 body {
-    color: #797924;
+    color: #166696;
     font-family: 'Georgia', 'Palatino', 'Palatino Linotype', 'Times New Roman', 'serif';
     font-size: 14px;
     line-height: 1.5em;
@@ -85,3 +93,12 @@ ul {
         font-style: italic;
         background-color: #424242;
     }
+
+footer .row:first-child a
+{
+    color: #000000;
+    &:focus,
+    &:hover{color: #333333}
+    &:active {
+     color: #eee;}
+}
