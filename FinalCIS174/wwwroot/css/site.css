@@ -22,9 +22,6 @@ header {
   z-index: 1;
 }
 
-body {
-  margin-bottom: 60px;
-}
 
 body {
     color: #166696;
@@ -32,15 +29,14 @@ body {
     font-size: 14px;
     line-height: 1.5em;
     padding: 1em;
+
 }
 
 
 body {
     width: 100%;
-    background-image: url("~/images/background.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url("../images/background.png");
+    background-repeat: repeat repeat;
     display: -ms-grid;
     display: grid;
     place-items: center;
@@ -64,6 +60,10 @@ ul {
 
 }
 
+ul li{
+    background-color:dimgray;
+    color:white;
+}
     ul li:nth-child(1) {
         background-color: #999999;
     }
