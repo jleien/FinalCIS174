@@ -10,7 +10,7 @@ using System.Net.Sockets;
 
 namespace FinalCIS174.Areas.Admin.Controllers
 {
-    //Uncomment for players to have an account to use the app
+//add chatacters code
     [Authorize]
     [Area("Admin")]
     public class PlayerController : Controller
@@ -41,7 +41,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
                         myplayers = context.Players.Include(c => c.Race).Include(c => c.Class).Where(c => ids.Contains(c.PlayerID)).ToList();
                     session.SetMyPlayers(myplayers);
                 }
-
+                //unique
                 IQueryable<Player> query = context.Players;
                 if (model.ActiveClass != "all")
                     query = query.Where(
