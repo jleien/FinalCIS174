@@ -60,14 +60,22 @@ namespace FinalCIS174.Areas.Admin.Controllers
         [Route("{area}/{controller}/{action}/{id?}")]
         public IActionResult Details(string id)
         {
-            var session = new PlayerSession(HttpContext.Session);
-            var model = new PlayerViewModel
+            if (User.Identity.Name == "DIO")
             {
-                Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
-                ActiveRace = session.GetActiveRace(),
-                ActiveClass = session.GetActiveClass(),
-            };
-            return View(model);
+                var session = new PlayerSession(HttpContext.Session);
+                var model = new PlayerViewModel
+                {
+                    Player = context.Players.Include(c => c.Race).Include(c => c.Class).FirstOrDefault(c => c.PlayerID == id),
+                    ActiveRace = session.GetActiveRace(),
+                    ActiveClass = session.GetActiveClass(),
+                };
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
         }
 
         [HttpPost]
@@ -120,19 +128,27 @@ namespace FinalCIS174.Areas.Admin.Controllers
         }
         public IActionResult AddPlayer()
         {
-            var player = new Player();
-            var data = context.Players.ToList();
-            //Auto increment player id
-            var playerID = 0;
-            IQueryable<Player> query = context.Players;
-            var findMax = query.Count();
-            playerID = findMax + 1;
+            if(User.Identity.Name == "DIO")
+            {
+                var player = new Player();
+                var data = context.Players.ToList();
+                //Auto increment player id
+                var playerID = 0;
+                IQueryable<Player> query = context.Players;
+                var findMax = query.Count();
+                playerID = findMax + 1;
 
-            player.PlayerID = Convert.ToString(playerID);
-            player.CreatorOfCharacter = User.Identity.Name;
-            ViewBag.Classes = context.Classes.ToList();
-            ViewBag.Races = context.Races.ToList();
-            return View(player);
+                player.PlayerID = Convert.ToString(playerID);
+                player.CreatorOfCharacter = User.Identity.Name;
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(player);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
         }
 
         [HttpPost]
@@ -157,10 +173,18 @@ namespace FinalCIS174.Areas.Admin.Controllers
         [Route("{area}/{controller}/{action}/{id?}")]
         public ActionResult EditPlayer(string PlayerID)
         {
-            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            ViewBag.Classes = context.Classes.ToList();
-            ViewBag.Races = context.Races.ToList();
-            return View(data);
+            if(User.Identity.Name == "DIO")
+            {
+                var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(data);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
         }
         
 
@@ -190,10 +214,18 @@ namespace FinalCIS174.Areas.Admin.Controllers
         [Route("{area}/{controller}/{action}/{id?}")]
         public ActionResult DeletePlayer(string PlayerID)
         {
-            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            ViewBag.Classes = context.Classes.ToList();
-            ViewBag.Races = context.Races.ToList();
-            return View(data);
+            if(User.Identity.Name =="DIO")
+            {
+                var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+                ViewBag.Classes = context.Classes.ToList();
+                ViewBag.Races = context.Races.ToList();
+                return View(data);
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
         }
         [HttpPost]
         [Route("{area}/{controller}/{action}/{id?}")]
