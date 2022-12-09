@@ -14,14 +14,18 @@ namespace FinalCIS174.Repository
         public void AddPlayer(Player player) => context.Add(player);
 
         public void DeletePlayer(Player player) => context.Remove(player);
-        public void EditPlayer(Player player) => context.Add(player);
+        public void EditPlayer(Player player)
+        {
+            context.Remove(GetPlayerById(player.PlayerID));
+            context.Add(player);
+        }
 
         public List<Player> GetAllPlayers()
         {
             return context.Players.ToList();
         }
 
-        public Player GetPlayerById(int id)
+        public Player GetPlayerById(string id)
         {
             return context.Players.Find(id);
         }

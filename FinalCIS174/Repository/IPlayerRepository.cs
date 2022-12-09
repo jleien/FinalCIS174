@@ -5,7 +5,7 @@ namespace FinalCIS174.Repository
     public interface IPlayerRepository<T> where T : class
     {
         List<Player> GetAllPlayers();
-        Player GetPlayerById(int id);
+        Player GetPlayerById(string id);
         void Save();
         void AddPlayer(Player player);
         void DeletePlayer(Player player);
