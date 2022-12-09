@@ -135,8 +135,8 @@ namespace FinalCIS174.Areas.Admin.Controllers
                 //Auto increment player id
                 var playerID = 0;
                 IQueryable<Player> query = context.Players;
-                var findMax = query.Count();
-                playerID = findMax + 1;
+                var findMax = query.Max(c => c.PlayerID);
+                playerID = Convert.ToInt16(findMax) + 1;
 
                 player.PlayerID = Convert.ToString(playerID);
                 player.CreatorOfCharacter = User.Identity.Name;
