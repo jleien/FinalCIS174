@@ -10,5 +10,6 @@ namespace FinalCIS174.Repository
         void AddPlayer(Player player);
         void DeletePlayer(Player player);
         void EditPlayer(Player player);
+        int Count();
     }
 }
