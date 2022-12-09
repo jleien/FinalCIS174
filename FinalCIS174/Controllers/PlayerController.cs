@@ -61,15 +61,24 @@ namespace FinalCIS174.Controllers
                 ActiveRace = session.GetActiveRace(),
                 ActiveClass = session.GetActiveClass(),
             };
-            if(model.Player.CreatorOfCharacter == User.Identity.Name)
+            if (model.Player != null)
             {
-                return View(model);
+                if (model.Player.CreatorOfCharacter == User.Identity.Name)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    TempData["message"] = "This is not your character.";
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
-                TempData["message"] = "This is not your character.";
+                TempData["message"] = "Character does not exist. ID: " + id;
                 return RedirectToAction("Index");
             }
+            
         }
 
 
@@ -164,22 +173,29 @@ namespace FinalCIS174.Controllers
             }
 
         }
-        [Route("{controller}/{action}/{id?}")]
+        [Route("{controller}/{action}/{PlayerID?}")]
         public ActionResult EditPlayer(string PlayerID)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            if(data.CreatorOfCharacter == User.Identity.Name)
-            {
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(data);
+            if (data != null) {
+                if (data.CreatorOfCharacter == User.Identity.Name)
+                {
+                    ViewBag.Classes = context.Classes.ToList();
+                    ViewBag.Races = context.Races.ToList();
+                    return View(data);
+                }
+                else
+                {
+                    TempData["message"] = "This is not your character.";
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
-                TempData["message"] = "This is not your character.";
+                TempData["message"] = "Character does not exist. ID: " + PlayerID;
                 return RedirectToAction("Index");
             }
-            
+
         }
         
 
@@ -210,18 +226,27 @@ namespace FinalCIS174.Controllers
         public ActionResult DeletePlayer(string PlayerID)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-            if (data.CreatorOfCharacter == User.Identity.Name)
+            if(data != null)
             {
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(data);
+                if (data.CreatorOfCharacter == User.Identity.Name)
+                {
+                    ViewBag.Classes = context.Classes.ToList();
+                    ViewBag.Races = context.Races.ToList();
+                    return View(data);
+                }
+                else
+                {
+                    TempData["message"] = "This is not your character.";
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
-                TempData["message"] = "This is not your character.";
+                TempData["message"] = "Character does not exist. ID: " + PlayerID;
                 return RedirectToAction("Index");
             }
-            
+
+
         }
         [HttpPost]
         [Route("{controller}/{action}/{PlayerID?}")]
