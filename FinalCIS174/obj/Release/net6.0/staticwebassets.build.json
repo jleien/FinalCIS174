@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g2Y0jfq3vOawIu2qVremrUtKx6E+Fy16C5+ye2XZ8UY=",
+  "Hash": "lQH00H9cG7+/YoD1jpLfKxz6PyaSkpIeCjIK5MRW1aw=",
   "Source": "FinalCIS174",
   "BasePath": "_content/FinalCIS174",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\wwwroot\\images\\background.png",
+      "SourceId": "FinalCIS174",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\wwwroot\\",
+      "BasePath": "_content/FinalCIS174",
+      "RelativePath": "images/background.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\background.png"
     },
     {
       "Identity": "C:\\Users\\kajak\\Source\\Repos\\FinalCIS174\\FinalCIS174\\wwwroot\\js\\site.js",
