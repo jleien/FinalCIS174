@@ -6,16 +6,15 @@ namespace FinalCIS174.Repository
     public class PlayerRepository : IPlayerRepository<Player>
     {
         private DNDContext context;
-        private DbSet<Player> dbset { get; set; }
         public PlayerRepository(DNDContext context)
         {
             this.context = context;
         }
 
-        public virtual void AddPlayer(Player player) => dbset.Add(player);
+        public void AddPlayer(Player player) => context.Add(player);
 
-        public virtual void DeletePlayer(Player player) => dbset.Remove(player);
-        public virtual void EditPlayer(Player player) => dbset.Add(player);
+        public void DeletePlayer(Player player) => context.Remove(player);
+        public void EditPlayer(Player player) => context.Add(player);
 
         public List<Player> GetAllPlayers()
         {
@@ -27,6 +26,10 @@ namespace FinalCIS174.Repository
             return context.Players.Find(id);
         }
 
-        public virtual void Save() => context.SaveChanges();
+        public void Save() => context.SaveChanges();
+        public int Count()
+        {
+            return context.Players.Count();
+        }
     }
 }
