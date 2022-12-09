@@ -46,22 +46,6 @@
           }
         }
       },
-      "Castle.Core/5.1.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Diagnostics.EventLog": "6.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Castle.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Castle.Core.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -307,22 +291,6 @@
         },
         "build": {
           "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.InMemory/7.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.0"
-        },
-        "compile": {
-          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
-            "related": ".xml"
-          }
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/7.0.0": {
@@ -818,22 +786,6 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
-      "Moq/4.18.3": {
-        "type": "package",
-        "dependencies": {
-          "Castle.Core": "5.1.0"
-        },
-        "compile": {
-          "lib/net6.0/Moq.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/Moq.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Newtonsoft.Json/13.0.2": {
         "type": "package",
         "compile": {
@@ -910,32 +862,6 @@
         "runtime": {
           "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {
             "related": ".xml"
-          }
-        }
-      },
-      "System.Diagnostics.EventLog/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Diagnostics.EventLog.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Diagnostics.EventLog.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          },
-          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll": {
-            "assetType": "runtime",
-            "rid": "win"
           }
         }
       },
@@ -1420,30 +1346,6 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
-    "Castle.Core/5.1.0": {
-      "sha512": "31UJpTHOiWq95CDOHazE3Ub/hE/PydNWsJMwnEVTqFFP4WhAugwpaVGxzOxKgNeSUUeqS2W6lxV+q7u1pAOfXg==",
-      "type": "package",
-      "path": "castle.core/5.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "ASL - Apache Software Foundation License.txt",
-        "CHANGELOG.md",
-        "LICENSE",
-        "castle-logo.png",
-        "castle.core.5.1.0.nupkg.sha512",
-        "castle.core.nuspec",
-        "lib/net462/Castle.Core.dll",
-        "lib/net462/Castle.Core.xml",
-        "lib/net6.0/Castle.Core.dll",
-        "lib/net6.0/Castle.Core.xml",
-        "lib/netstandard2.0/Castle.Core.dll",
-        "lib/netstandard2.0/Castle.Core.xml",
-        "lib/netstandard2.1/Castle.Core.dll",
-        "lib/netstandard2.1/Castle.Core.xml",
-        "readme.txt"
-      ]
-    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1776,20 +1678,6 @@
         "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
         "microsoft.entityframeworkcore.design.7.0.0.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.InMemory/7.0.0": {
-      "sha512": "di7I9EUk+ibG2N7Ns4ecUK6Mz7HED7qik3jSbBIhdKXcU3ansXJEAAlOdM7xfRDzozs5elSLk9qQuHCbYwI1yA==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.inmemory/7.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll",
-        "lib/net6.0/Microsoft.EntityFrameworkCore.InMemory.xml",
-        "microsoft.entityframeworkcore.inmemory.7.0.0.nupkg.sha512",
-        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/7.0.0": {
@@ -2516,26 +2404,6 @@
         "mono.texttemplating.nuspec"
       ]
     },
-    "Moq/4.18.3": {
-      "sha512": "nmV2lludVOFmVi+Vtq9twX1/SDiEVyYDURzxW39gUBqjyoXmdyNwJSeOfSCJoJTXDXBVfFNfEljB5UWGj/cKnQ==",
-      "type": "package",
-      "path": "moq/4.18.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net462/Moq.dll",
-        "lib/net462/Moq.xml",
-        "lib/net6.0/Moq.dll",
-        "lib/net6.0/Moq.xml",
-        "lib/netstandard2.0/Moq.dll",
-        "lib/netstandard2.0/Moq.xml",
-        "lib/netstandard2.1/Moq.dll",
-        "lib/netstandard2.1/Moq.xml",
-        "moq.4.18.3.nupkg.sha512",
-        "moq.nuspec",
-        "moq.png"
-      ]
-    },
     "Newtonsoft.Json/13.0.2": {
       "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
       "type": "package",
@@ -2689,37 +2557,6 @@
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "System.Diagnostics.EventLog/6.0.0": {
-      "sha512": "lcyUiXTsETK2ALsZrX+nWuHSIQeazhqPphLfaRxzdGaG93+0kELqpgEHtwWOlQe7+jSFnKwaCAgL4kjeZCQJnw==",
-      "type": "package",
-      "path": "system.diagnostics.eventlog/6.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/netcoreapp2.0/System.Diagnostics.EventLog.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Diagnostics.EventLog.dll",
-        "lib/net461/System.Diagnostics.EventLog.xml",
-        "lib/net6.0/System.Diagnostics.EventLog.dll",
-        "lib/net6.0/System.Diagnostics.EventLog.xml",
-        "lib/netcoreapp3.1/System.Diagnostics.EventLog.dll",
-        "lib/netcoreapp3.1/System.Diagnostics.EventLog.xml",
-        "lib/netstandard2.0/System.Diagnostics.EventLog.dll",
-        "lib/netstandard2.0/System.Diagnostics.EventLog.xml",
-        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll",
-        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll",
-        "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.Messages.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Diagnostics.EventLog.xml",
-        "system.diagnostics.eventlog.6.0.0.nupkg.sha512",
-        "system.diagnostics.eventlog.nuspec",
-        "useSharedDesignerContext.txt"
       ]
     },
     "System.Drawing.Common/5.0.0": {
@@ -3995,31 +3832,29 @@
     "net6.0": [
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.11",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.11",
-      "Microsoft.EntityFrameworkCore.InMemory >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
-      "Moq >= 4.18.3",
       "Newtonsoft.Json >= 13.0.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thefo\\.nuget\\packages\\": {},
+    "C:\\Users\\Quinn\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+      "projectUniqueName": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
       "projectName": "FinalCIS174",
-      "projectPath": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
-      "packagesPath": "C:\\Users\\thefo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thefo\\Source\\Repos\\FinalCIS174\\FinalCIS174\\obj\\",
+      "projectPath": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\FinalCIS174.csproj",
+      "packagesPath": "C:\\Users\\Quinn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Quinn\\OneDrive\\Documents\\FinalCIS174\\FinalCIS174\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\thefo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Quinn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4055,10 +3890,6 @@
             "target": "Package",
             "version": "[6.0.11, )"
           },
-          "Microsoft.EntityFrameworkCore.InMemory": {
-            "target": "Package",
-            "version": "[7.0.0, )"
-          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.0, )"
@@ -4068,10 +3899,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.0, )"
-          },
-          "Moq": {
-            "target": "Package",
-            "version": "[4.18.3, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -4097,7 +3924,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

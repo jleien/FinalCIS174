@@ -64,6 +64,17 @@ ul li{
     background-color:dimgray;
     color:white;
 }
+
+ul li:nth-child(even) {
+    background-color: #999999;
+}
+
+
+ul li:nth-child(odd) {
+    font-style: italic;
+    background-color: #7d7d7d;
+}
+
     ul li:nth-child(1) {
         background-color: #999999;
     }
@@ -84,7 +95,7 @@ ul li{
 
     ul li:nth-child(5) {
         font-style: italic;
-        background-color: #424242;
+        background-color: #999999;
         color: #000000;
         text-shadow: 2px 4px 6px white;
     }
@@ -93,7 +104,7 @@ ul li{
         color: #000000;
         text-shadow: 2px 2px 4px white;
         font-style: italic;
-        background-color: #424242;
+        background-color: #999999;
     }
 
 footer .row:first-child a
