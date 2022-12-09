@@ -128,10 +128,15 @@ namespace FinalCIS174.Controllers
             var player = new Player();
             var data = context.Players.ToList();
             //Auto increment player id
-            var playerID = 0;
             IQueryable<Player> query = context.Players;
-            var findMax = query.Max(c=> c.PlayerID);
-            playerID = Convert.ToInt16(findMax) + 1;
+            List<int> findMaxID = new List<int>();
+            foreach(var getPlayer in query)
+            {
+                int id = Convert.ToInt16(getPlayer.PlayerID);
+                findMaxID.Add(id);
+            }
+            
+            var playerID = findMaxID.Max() + 1;
 
             player.PlayerID = Convert.ToString(playerID);
             player.CreatorOfCharacter = User.Identity.Name;

@@ -128,49 +128,11 @@ namespace FinalCIS174.Areas.Admin.Controllers
         }
         public IActionResult AddPlayer()
         {
-            if(User.Identity.Name == "DIO")
-            {
-                var player = new Player();
-                var data = context.Players.ToList();
-                //Auto increment player id
-                var playerID = 0;
-                IQueryable<Player> query = context.Players;
-                var findMax = query.Max(c => c.PlayerID);
-                playerID = Convert.ToInt16(findMax) + 1;
-
-                player.PlayerID = Convert.ToString(playerID);
-                player.CreatorOfCharacter = User.Identity.Name;
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(player);
-            }
-            else
-            {
-                return RedirectToAction("AccessDenied", "Account");
-            }
+            return RedirectToAction("AddPlayer", "Player");
 
         }
 
-        [HttpPost]
-        public IActionResult AddPlayer(Player model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                context.Players.Add(model);
-
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(model);
-            }
-
-        }
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult EditPlayer(string PlayerID)
         {
             if(User.Identity.Name == "DIO")
@@ -189,7 +151,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
         
 
         [HttpPost]
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult EditPlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
@@ -211,7 +173,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID)
         {
             if(User.Identity.Name =="DIO")
@@ -228,7 +190,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
