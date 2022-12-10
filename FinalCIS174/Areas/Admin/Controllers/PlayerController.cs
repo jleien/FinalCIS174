@@ -69,7 +69,16 @@ namespace FinalCIS174.Areas.Admin.Controllers
                     ActiveRace = session.GetActiveRace(),
                     ActiveClass = session.GetActiveClass(),
                 };
-                return View(model);
+                if(model.Player != null)
+                {
+                    return View(model);
+
+                }
+                else
+                {
+                    TempData["message"] = "Character does not exist. ID: " + id;
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
@@ -128,57 +137,27 @@ namespace FinalCIS174.Areas.Admin.Controllers
         }
         public IActionResult AddPlayer()
         {
-            if(User.Identity.Name == "DIO")
-            {
-                var player = new Player();
-                var data = context.Players.ToList();
-                //Auto increment player id
-                var playerID = 0;
-                IQueryable<Player> query = context.Players;
-                var findMax = query.Max(c => c.PlayerID);
-                playerID = Convert.ToInt16(findMax) + 1;
-
-                player.PlayerID = Convert.ToString(playerID);
-                player.CreatorOfCharacter = User.Identity.Name;
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(player);
-            }
-            else
-            {
-                return RedirectToAction("AccessDenied", "Account");
-            }
+            return RedirectToAction("AddPlayer", "Player");
 
         }
 
-        [HttpPost]
-        public IActionResult AddPlayer(Player model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                context.Players.Add(model);
-
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(model);
-            }
-
-        }
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult EditPlayer(string PlayerID)
         {
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
             if(User.Identity.Name == "DIO")
             {
-                var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(data);
+                if (data != null)
+                {
+                    ViewBag.Classes = context.Classes.ToList();
+                    ViewBag.Races = context.Races.ToList();
+                    return View(data);
+                }
+                else
+                {
+                    TempData["message"] = "Character does not exist. ID: " + PlayerID;
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
@@ -189,7 +168,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
         
 
         [HttpPost]
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult EditPlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
@@ -211,15 +190,24 @@ namespace FinalCIS174.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID)
         {
-            if(User.Identity.Name =="DIO")
+            var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
+            if (User.Identity.Name =="DIO")
             {
-                var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
-                ViewBag.Classes = context.Classes.ToList();
-                ViewBag.Races = context.Races.ToList();
-                return View(data);
+                if(data != null)
+                {
+                    ViewBag.Classes = context.Classes.ToList();
+                    ViewBag.Races = context.Races.ToList();
+                    return View(data);
+                }
+                else
+                {
+                    TempData["message"] = "Character does not exist. ID: " + PlayerID;
+                    return RedirectToAction("Index");
+                }
+
             }
             else
             {
@@ -228,7 +216,7 @@ namespace FinalCIS174.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        [Route("{area}/{controller}/{action}/{id?}")]
+        [Route("{area}/{controller}/{action}/{PlayerID?}")]
         public ActionResult DeletePlayer(string PlayerID, Player model)
         {
             var data = context.Players.Where(x => x.PlayerID == PlayerID).FirstOrDefault();
